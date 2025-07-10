@@ -1,0 +1,74 @@
+<MainMenu>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+
+        Label:
+            text: 'Lost in Dreams'
+            font_size: 40
+
+        Button:
+            text: 'New Game'
+            on_press: root.start_new_game()
+
+        Button:
+            text: 'Settings'
+            on_press: root.open_settings()
+
+        Button:
+            text: 'Exit'
+            on_press: app.stop()
+
+<SettingsScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+
+        Label:
+            text: 'Settings'
+            font_size: 32
+
+        Button:
+            text: 'Back to Main Menu'
+            on_press: root.go_back()
+
+<CutsceneScreen>:
+    name: 'cutscene'
+
+    BoxLayout:
+        orientation: 'vertical'
+        Video:
+            id: video
+            source: ''
+            state: 'stop'
+            options: {'eos': 'stop'}  # зупинка після завершення
+            allow_stretch: True
+            keep_ratio: True
+
+        # тут відео через Image (self.img)
+
+        Button:
+            size_hint_y: None
+            height: 40
+            text: 'Пропустити'
+            on_press: root.skip_cutscene()
+
+<GameScreen>:
+    BoxLayout:  
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+
+        Label:
+            text: 'Game Staed'
+            font_size: 32
+
+        Button:
+            text: 'Back to Main Menu'
+            size_hint_y: None
+            height: 50
+            on_press: 
+                root.manager.transition.direction = 'right'
+                root.manager.current = 'main_menu'
