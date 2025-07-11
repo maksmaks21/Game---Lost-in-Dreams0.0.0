@@ -1,3 +1,4 @@
+# Головне меню
 <MainMenu>:
     BoxLayout:
         orientation: 'vertical'
@@ -10,7 +11,7 @@
 
         Button:
             text: 'New Game'
-            on_press: root.start_new_game()
+            on_press: root.start_new_game()  # Запуск катсцени
 
         Button:
             text: 'Settings'
@@ -20,6 +21,7 @@
             text: 'Exit'
             on_press: app.stop()
 
+# Екран налаштувань
 <SettingsScreen>:
     BoxLayout:
         orientation: 'vertical'
@@ -34,6 +36,7 @@
             text: 'Back to Main Menu'
             on_press: root.go_back()
 
+# Катсцена
 <CutsceneScreen>:
     name: 'cutscene'
 
@@ -43,11 +46,9 @@
             id: video
             source: ''
             state: 'stop'
-            options: {'eos': 'stop'}  # зупинка після завершення
+            options: {'eos': 'stop'}  # зупиняємо відео в кінці
             allow_stretch: True
             keep_ratio: True
-
-        # тут відео через Image (self.img)
 
         Button:
             size_hint_y: None
@@ -55,6 +56,7 @@
             text: 'Пропустити'
             on_press: root.skip_cutscene()
 
+# Екран гри
 <GameScreen>:
     BoxLayout:  
         orientation: 'vertical'
@@ -62,7 +64,7 @@
         spacing: 20
 
         Label:
-            text: 'Game Staed'
+            text: 'Game Started'
             font_size: 32
 
         Button:

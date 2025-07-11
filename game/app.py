@@ -10,9 +10,9 @@ from game.screens.game_screen import GameScreen  # Імпортуємо екра
 from game.screens.gameplay import GameplayScreen # Імпортуємо екран геймплею, якщо він існує
 
 class LostInDreamsApp(App):  # Головний клас додатку (успадковується від Kivy App)
-    def build(self):
-        kv_path = os.path.join(os.path.dirname(__file__), '..', 'kv', 'mygame.kv')
-        Builder.load_file(kv_path)
+    def build(self): 
+        kv_path = os.path.join(os.path.dirname(__file__), '..', 'kv', 'mygame.kv') # Шлях до .kv файлу
+        Builder.load_file(kv_path) # Завантажуємо .kv файл, щоб використовувати його в додатку
 
         sm = ScreenManager()
         sm.add_widget(MainMenu(name='main_menu')) # Додаємо головний екран меню
@@ -20,7 +20,7 @@ class LostInDreamsApp(App):  # Головний клас додатку (усп�
         sm.add_widget(CutsceneScreen(name='cutscene')) # Додаємо екран для відтворення відео
         sm.add_widget(GameScreen(name='game'))  # Додаємо екран гри
         sm.add_widget(GameplayScreen(name='gameplay')) # Додаємо екран геймплею, якщо він існує
-        return sm
+        return sm # Повертаємо ScreenManager як кореневий віджет додатку
 
 def run_game():
     LostInDreamsApp().run()  # Запускається додаток
