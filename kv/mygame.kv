@@ -29,76 +29,49 @@
         spacing: 15
 
         Label:
-            text: 'Налаштування'
+            text: 'Settings'
             font_size: 36
             size_hint_y: None
             height: self.texture_size[1] + 20
 
         BoxLayout:
             orientation: 'horizontal'
-            size_hint_y: None
-            height: 50
-
+            spacing: 20
             Label:
-                text: 'Гучність музики'
-                size_hint_x: 0.6
-                valign: 'middle'
-                halign: 'left'
-                text_size: self.size
-
+                text: 'Volume'
+                font_size: '20sp'
             Slider:
+                id: volume_slider
                 min: 0
                 max: 1
                 value: 0.5
-                size_hint_x: 0.4
+                on_value: root.on_volume_change(self.value)
 
         BoxLayout:
             orientation: 'horizontal'
-            size_hint_y: None
-            height: 50
-
+            spacing: 20
             Label:
-                text: 'Звук увімкнено'
-                size_hint_x: 0.6
-                valign: 'middle'
-                halign: 'left'
-                text_size: self.size
-
-            CheckBox:
-                active: True
-                size_hint_x: 0.4
-
-        BoxLayout:
-            orientation: 'horizontal'
-            size_hint_y: None
-            height: 50
-
-            Label:
-                text: 'Яскравість'
-                size_hint_x: 0.6
-                valign: 'middle'
-                halign: 'left'
-                text_size: self.size
-
+                text: 'Brightness'
+                font_size: '20sp'
             Slider:
-                min: 0
+                id: brightness_slider
+                min: 0.1
                 max: 1
-                value: 0.8
-                size_hint_x: 0.4
+                value: 1
+                on_value: root.on_brightness_change(self.value)
 
         BoxLayout:
             orientation: 'horizontal'
             size_hint_y: None
             height: 50
-
             Label:
-                text: 'Мова'
+                text: 'Language'
                 size_hint_x: 0.6
                 valign: 'middle'
                 halign: 'left'
                 text_size: self.size
-
             Spinner:
+                id: language_spinner
                 text: 'Українська'
                 values: ['Українська', 'English', 'Polski']
                 size_hint_x: 0.4
@@ -107,28 +80,31 @@
             orientation: 'horizontal'
             size_hint_y: None
             height: 50
-
             Label:
-                text: 'Повний екран'
+                text: 'Fullscreen'
                 size_hint_x: 0.6
                 valign: 'middle'
                 halign: 'left'
                 text_size: self.size
-
             CheckBox:
+                id: fullscreen_checkbox
                 active: False
                 size_hint_x: 0.4
 
         Widget:
 
         Button:
-            text: 'Назад'
+            text: 'Save Settings'
             size_hint_y: None
             height: 50
-            on_press: root.go_back()
+            on_press: root.save_settings()
 
+        Button:
+            text: 'Back to Menu'
+            size_hint_y: None
+            height: 50
+            on_press: root.manager.current = 'main_menu'
 
-        
 
 # Катсцена
 <CutsceneScreen>:

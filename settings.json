@@ -1,6 +1,6 @@
 {
-  "fullscreen": true,
-  "language": "Українська",
-  "volume": 0.5,
-  "sound_enabled": true
+    "volume": 0.0,
+    "brightness": 1.0,
+    "language": "English",
+    "fullscreen": false
 }
